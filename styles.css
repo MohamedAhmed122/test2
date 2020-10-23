@@ -48,7 +48,7 @@ button{cursor: pointer;}
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 450px;
+    max-width: 550px;
     margin: 30px auto;
     padding: 10px;
     text-transform: uppercase;
@@ -88,23 +88,20 @@ button{cursor: pointer;}
 
 }
 .box{
-    height: 400px;
+    height: 250px;
     background-color: black;
     color: white;
     border: 1px solid white;
     text-align: center;
-    padding-top:10rem ;
+    padding-top: 6rem ;
     cursor: pointer;
 }
-.is-flipped {
-    transform: rotateY(180deg);
-  }
-.indigo{background-color: #303F9F}
-
-.lightblue{ background-color: #2196F3;}
-
-.cyan{background-color: #0097A7;}
-
-.green{background-color: yellowgreen;}
-
-.orange {background-color: #FF5722;}
+.box-flip{
+    height: 250px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 6rem ;
+    cursor: pointer;
+}

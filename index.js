@@ -56,31 +56,20 @@ const math = (functionName,anc, array) =>{
 ///////////-----------       Second Task Sorting       --------- ---------//////////
 
 const list = document.querySelector('.list')
-const firstNameBtn = document.querySelector('.name')
-const secondNameBtn = document.querySelector('.surname')
-const dobBtn = document.querySelector('.dob')
+// const firstNameBtn = document.querySelector('.name')
+// const secondNameBtn = document.querySelector('.surname')
+// const dobBtn = document.querySelector('.dob')
+const populationBtn = document.querySelector('.population')
 
 let desc =false;
-firstNameBtn.addEventListener('click',()=>{
-    let array = getSorted(listItems ,'firstName', desc)
+populationBtn.addEventListener('click',()=>{
+    let array = getSorted(listItems ,'population', desc)
 
     displayList(array)
     desc = !desc;
 })
 
-secondNameBtn.addEventListener('click',()=>{
-    let array = getSorted(listItems ,'lastName', desc)
 
-    displayList(array)
-    desc = !desc;
-})
-
-dobBtn.addEventListener('click',()=>{
-    let array = sortDate(listItems ,'lastName', desc)
-
-    displayList(array)
-    desc = !desc;
-})
 
 const getSorted =(array, sort, desc) =>{
     array.sort(function(a,b){
@@ -107,35 +96,36 @@ const sortDate = (array, sort ,desc)=>{
 
 let listItems =[
     {
-        firstName: 'Neymar',
-        lastName: 'Júnior',
-        dob: '1991-09-07'
+        population: 1000000,
+        country: 'Russia',
+        city: 'Tomsk',
+        
     },
     {
-        firstName: 'Lionel',
-        lastName: 'Messi',
-        dob: '1987-10-10'
+        population: 20000,
+        country: 'Italy',
+        city: 'Roma',
+       
     },
     {
-        firstName: 'Cristiano',
-        lastName: 'Ronaldo',
-        dob: '1789-12-12'
+        population: 1900,
+        country: 'England',
+        city: 'London',
+       
     },
     {
-        firstName: 'Mo',
-        lastName: 'Salah',
-        dob: '1648-03-07'
+        population: 4000,
+        country: 'Us',
+        city: 'New York',
+    
     },
     {
-        firstName: 'Karim',
-        lastName: 'Benzema',
-        dob: '1953-12-10'
+        population: 5000000,
+        country: 'China',
+        city: 'Shanghai',
+        
     },
-    {
-        firstName: 'Mohamed',
-        lastName: 'Youssef',
-        dob: '1998-15-07'
-    }
+   
 
 ]
 const displayList = (array =[] ) =>{
@@ -147,21 +137,23 @@ const displayList = (array =[] ) =>{
         let itemElement = document.createElement('div');
         itemElement.classList.add('list-item')
 
-        let firstName = document.createElement('div');
-        firstName.classList.add('item-first')
-        firstName.innerHTML = item.firstName;
+        let population = document.createElement('div');
+        population.classList.add('item-first')
+        population.innerHTML = item.population;
 
-        let secondName = document.createElement('div');
-        secondName.classList.add('item-second')
-        secondName.innerHTML = item.lastName;
+        let country = document.createElement('div');
+        country.classList.add('item-second')
+        country.innerHTML = item.country;
 
-        let dob = document.createElement('div');
-        dob.classList.add('item-dob')
-        dob.innerHTML = item.dob;
+        let city = document.createElement('div');
+        city.classList.add('item-city')
+        city.innerHTML = item.city;
 
-        itemElement.appendChild(firstName)
-        itemElement.appendChild(secondName)
-        itemElement.appendChild(dob)
+       
+
+        itemElement.appendChild(population)
+        itemElement.appendChild(country)
+        itemElement.appendChild(city)
         list.appendChild(itemElement)
     }
 }
@@ -170,28 +162,30 @@ displayList(listItems)
 
 // ------------   ------ the Third task  ----------------- ----------//
 
-const indigo =document.querySelector('.indigo');
-const lightblue =document.querySelector('.lightblue');
-const cyan =document.querySelector('.cyan');
+const switchBox =document.querySelector('.box');
+const WidthInput = document.querySelector('.width');
+const heightInput = document.querySelector('.height');
+const submitBtn = document.querySelector('.submit');
 
 
-indigo.addEventListener('click',()=>{
-    indigo.classList.toggle('cyan')   
+
+submitBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const width = WidthInput.value;
+    const height = heightInput.value
+    switchBox.style.height = `${width}px `;
+    switchBox.style.width = `${height}px`;
+    console.log('submit')
+    console.log(width, height)
 })
-lightblue.addEventListener('click',()=>{
-    lightblue.classList.toggle('orange') 
-})
-cyan.addEventListener('click',()=>{
-    cyan.classList.toggle('green') 
-
-})
-
-
-// cyan.addEventListener('click',()=>{
-//     lightblue.classList.toggle('lightblue')   
-// })
-
-// indigo.addEventListener('click',()=>{
-//     indigo.classList.toggle('cyan')   
-// })
-
+let text =true;
+switchBox.addEventListener('click',()=>{
+    switchBox.classList.toggle('box-flip');
+    text =!text;
+    if (text){
+        switchBox.innerHTML='Black'
+    }else{
+        switchBox.innerHTML='White'
+    }
+    
+} )
