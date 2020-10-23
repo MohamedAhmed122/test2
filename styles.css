@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body,html{
+    background-color: #f3f3f3;
+}
+
+p{text-align: center;}
+
+button{cursor: pointer;}
+
+.btn{
+    padding: 12px 20px;
+    border-radius: 30px;
+    color: #2196F3;
+    outline-width: 0;
+    background-color: white;
+    border: 2px solid #2196F3;
+    transition: all 0.5s ease-in-out;
+}
+.btn:hover{
+    color: white;
+    border: 2px solid white;
+    background-color: #303F9F;
+}
+.task-header{
+    text-align: center;
+    margin-top: 7rem;
+    color: #2196F3;
+}
+
+
+.generate-main, .math-options{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 10px;
+  
+}
+ /*              Second Task Style           */
+
+.sort_options,.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.sort_options button{
+    flex: 1 1 33%;
+    appearance: none;
+    padding: 15px 0;
+    margin: 0px 8px;
+    text-transform: uppercase;
+    padding: 10px;
+}
+.list{
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    margin: 30px auto;
+ 
+}
+.list .list-item{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border:2px solid #2196F3;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-transform: uppercase;
+}
+
+ /*  -------------- the Fourth Task--------- */
+.switches{
+    margin-top: 5rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 250px 250px 250px;
+
+}
+.box{
+    height: 400px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    text-align: center;
+    padding-top:10rem ;
+    cursor: pointer;
+}
+.is-flipped {
+    transform: rotateY(180deg);
+  }
+.indigo{background-color: #303F9F}
+
+.lightblue{ background-color: #2196F3;}
+
+.cyan{background-color: #0097A7;}
+
+.green{background-color: yellowgreen;}
+
+.orange {background-color: #FF5722;}
