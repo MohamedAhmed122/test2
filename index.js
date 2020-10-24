@@ -56,39 +56,65 @@ const math = (functionName,anc, array) =>{
 ///////////-----------       Second Task Sorting       --------- ---------//////////
 
 const list = document.querySelector('.list')
-// const firstNameBtn = document.querySelector('.name')
-// const secondNameBtn = document.querySelector('.surname')
-// const dobBtn = document.querySelector('.dob')
 const populationBtn = document.querySelector('.population')
 
 let desc =false;
 populationBtn.addEventListener('click',()=>{
-    let array = getSorted(listItems ,'population', desc)
 
+    let array = sortByCountry(listItems,desc,listItems.length);
+     
     displayList(array)
     desc = !desc;
 })
 
-
-
-const getSorted =(array, sort, desc) =>{
-    array.sort(function(a,b){
-        if (a[sort] < b[sort]) return -1;
-        if (a[sort] > b[sort]) return 1;
+const sortByCountry = (array, desc, L)=>{
+    for( var i =0; i<L-2;i++){
+        for(var k = i+1; k<L; k++){
+            if(array[i].country == array[k].country){
+               return sortByCity(array,desc,L);
+            }
+        }
+     }
+     array.sort(function(a,b){
+        if (a["country"] < b["country"]) return -1;
+        if (a["country"] > b["country"]) return 1;
         return 0;
     })
+    array.sort();
     if (desc) array.reverse();
 
     return array;
 }
-const sortDate = (array, sort ,desc)=>{
-    array.sort(function(a,b){
-            if (new Date(a[sort]) < new Date(b[sort])) return -1;
-            if (new Date(a[sort]) > new Date(b[sort]))  return 1;
-            return 0;
+
+const sortByCity = (array,desc,L)=>{
+    for( var i =0; i<L-2;i++){
+        for(var k = i+1; k<L; k++){
+            if(array[i].city == array[k].city){
+                return  sortByPopulation(array,desc);
+            }
         }
-    )
+     }
+     array.sort(function(a,b){
+        if (a["city"] < b["city"]) return -1;
+        if (a["city"] > b["city"]) return 1;
+        return 0;
+    })
+    array.sort();
     if (desc) array.reverse();
+
+    return array;
+     
+}
+
+const sortByPopulation = (array,desc)=>{
+    array.sort(function(a,b){
+        if (a["population"] < b["population"]) return -1;
+        if (a["population"] > b["population"]) return 1;
+        return 0;
+    })
+    array.sort();
+    if (desc) array.reverse();
+
     return array;
 }
 
@@ -96,38 +122,52 @@ const sortDate = (array, sort ,desc)=>{
 
 let listItems =[
     {
-        population: 1000000,
-        country: 'Russia',
-        city: 'Tomsk',
-        
+    population: 1000,
+    country: 'US',
+    city: 'New York',
+    
     },
+    
+  
     {
-        population: 20000,
-        country: 'Italy',
-        city: 'Roma',
-       
-    },
-    {
-        population: 1900,
-        country: 'England',
-        city: 'London',
-       
-    },
-    {
-        population: 4000,
-        country: 'Us',
-        city: 'New York',
+    population: 500,
+    country: 'Russia',
+    city: 'Tomsk',
     
     },
     {
-        population: 5000000,
-        country: 'China',
-        city: 'Shanghai',
-        
+    population: 700,
+    country: 'Us',
+    city: 'New Jersey',
+    
     },
-   
-
+    {
+    population: 50000,
+    country: 'England',
+    city: 'London',
+    },
+      
+    {
+    population: 900,
+    country: 'China',
+    city: 'Shanghai',
+    
+    },
+        {
+    population: 50090,
+    country: 'Russia',
+    city: 'Moscow',
+    },
+    {
+    population: 9810,
+    country: 'Egypt',
+    city: 'Cairo',
+    },
+    
 ]
+
+
+
 const displayList = (array =[] ) =>{
     list.innerHTML='';
     
