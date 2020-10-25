@@ -61,61 +61,40 @@ const populationBtn = document.querySelector('.population')
 let desc =false;
 populationBtn.addEventListener('click',()=>{
 
-    let array = sortByCountry(listItems,desc,listItems.length);
+    let array = sortList(listItems, desc);
      
     displayList(array)
     desc = !desc;
 })
 
-const sortByCountry = (array, desc, L)=>{
-    for( var i =0; i<L-2;i++){
-        for(var k = i+1; k<L; k++){
-            if(array[i].country == array[k].country){
-               return sortByCity(array,desc,L);
+const sortList = (list, desc)=>{
+    list.sort((a, b) => {
+        if (a.country.toLowerCase() === b.country.toLowerCase()) {
+            if (a.city === b.city) {
+                if (a.population === b.population) {
+                    return 0;
+                } else if (a.population > b.population) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            } else if (a.city.toLowerCase() > b.city.toLowerCase()) {
+                return 1;
+            } else {
+                return -1;
             }
+        } else if (a.country.toLowerCase() > b.country.toLowerCase()) {
+            return 1;
+        } else {
+            return -1;
         }
-     }
-     array.sort(function(a,b){
-        if (a["country"] < b["country"]) return -1;
-        if (a["country"] > b["country"]) return 1;
-        return 0;
-    })
-    array.sort();
-    if (desc) array.reverse();
+    });
 
-    return array;
-}
+    if (desc) {
+        list.reverse();
+    }
 
-const sortByCity = (array,desc,L)=>{
-    for( var i =0; i<L-2;i++){
-        for(var k = i+1; k<L; k++){
-            if(array[i].city == array[k].city){
-                return  sortByPopulation(array,desc);
-            }
-        }
-     }
-     array.sort(function(a,b){
-        if (a["city"] < b["city"]) return -1;
-        if (a["city"] > b["city"]) return 1;
-        return 0;
-    })
-    array.sort();
-    if (desc) array.reverse();
-
-    return array;
-     
-}
-
-const sortByPopulation = (array,desc)=>{
-    array.sort(function(a,b){
-        if (a["population"] < b["population"]) return -1;
-        if (a["population"] > b["population"]) return 1;
-        return 0;
-    })
-    array.sort();
-    if (desc) array.reverse();
-
-    return array;
+    return list;
 }
 
 ////////---------------------------------///////
@@ -142,6 +121,11 @@ let listItems =[
     
     },
     {
+        population: 98100,
+        country: 'Egypt',
+        city: 'Alex',
+    },
+    {
     population: 50000,
     country: 'England',
     city: 'London',
@@ -153,7 +137,7 @@ let listItems =[
     city: 'Shanghai',
     
     },
-        {
+    {
     population: 50090,
     country: 'Russia',
     city: 'Moscow',
@@ -164,9 +148,7 @@ let listItems =[
     city: 'Cairo',
     },
     
-]
-
-
+];
 
 const displayList = (array =[] ) =>{
     list.innerHTML='';
